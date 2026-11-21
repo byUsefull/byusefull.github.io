@@ -43,6 +43,17 @@
     r.push({ k: "Link", html: `<a href="${gameUrl(g.id)}">${T("Страница игры", "Game page")} →</a> · <a href="${g.url}" target="_blank" rel="noopener" data-net="Open ${esc(g.url.replace("https://www.", ""))}">Roblox</a>` });
     return r;
   }
+  /* На узком экране Properties стоят под мозаикой: после выбора игры докручиваем к ним,
+     чтобы панель целиком была над плашкой Output */
+  const inspect = $(".inspect");
+  function revealInspect() {
+    if (!inspect || !matchMedia("(max-width: 1080px)").matches) return;
+    const r = inspect.getBoundingClientRect(), top = 76, bottom = innerHeight - 96;
+    if (r.top >= top && r.bottom <= bottom) return;
+    let delta = r.bottom - bottom;
+    if (r.top - delta < top) delta = r.top - top;
+    scrollBy({ top: delta, behavior: reduce ? "auto" : "smooth" });
+  }
   function selectGame(id) {
     selected = id === selected ? null : id;
     $$(".tile").forEach(t => t.setAttribute("aria-pressed", String(t.dataset.game === selected)));
@@ -53,6 +64,7 @@
       S.setPath(`Workspace.Games.${g.obj}`);
       S.holdPath(1500);
       out("NAV", `Selected Workspace.Games.${esc(g.obj)}`, "games");
+      revealInspect();
     } else {
       renderInspect(folderRows(), "Folder “Games”");
       S.setPath("Workspace.Games");
@@ -71,6 +83,7 @@
   const SHOW_MS = 7000;
   function renderShow() {
     show.innerHTML = `
+      <div class="show-hint" aria-hidden="true"><span>${T("Главные игры", "Main games")}</span><em class="show-count"></em><small>${T("листайте или нажмите на игру", "swipe or tap a game")}</small></div>
       <div class="show-tabs" role="tablist" aria-label="${T("Главные игры", "Main games")}">
         ${FEAT.map((g, i) => `<button type="button" class="show-tab" role="tab" id="st-${g.id}" aria-selected="${i === cur}" aria-controls="show-stage" data-i="${i}">
           <img src="${S.iconSrc(g.id)}" alt="">
@@ -82,13 +95,19 @@
   }
   function renderStage(animate = true) {
     const g = FEAT[cur], stage = $(".show-stage", show);
+    /* Старая обложка остаётся фоном, пока новая проявляется, — без чёрного кадра */
+    const prevSrc = $(".show-img", stage)?.getAttribute("src");
     stage.setAttribute("aria-labelledby", `st-${g.id}`);
     stage.innerHTML = `
-      <a class="show-media" href="${gameUrl(g.id)}" aria-label="${esc(gameName(g))}">
-        <img class="show-img${reduce ? "" : " kb"}" src="${S.thumbSrc(g.id)}" alt="" width="768" height="432">
-        <span class="show-shade"></span>
-        <span class="show-hook">${L(g.hook)}</span>
-      </a>
+      <div class="show-mediawrap">
+        <a class="show-media" href="${gameUrl(g.id)}" aria-label="${esc(gameName(g))}"${prevSrc ? ` style="background-image:url('${prevSrc}')"` : ""}>
+          <img class="show-img${reduce ? "" : " kb"}" src="${S.thumbSrc(g.id)}" alt="" width="768" height="432" decoding="async">
+          <span class="show-shade"></span>
+          <span class="show-hook">${L(g.hook)}</span>
+        </a>
+        <button type="button" class="show-arrow prev" data-step="-1" aria-label="${T("Предыдущая игра", "Previous game")}"><svg class="ic"><use href="#i-back"/></svg></button>
+        <button type="button" class="show-arrow next" data-step="1" aria-label="${T("Следующая игра", "Next game")}"><svg class="ic"><use href="#i-arrow"/></svg></button>
+      </div>
       <div class="show-info">
         <div class="show-task"><span>${T("Главная задача", "The main problem")}</span><p>${L(g.task)}</p></div>
         <dl class="show-facts">
@@ -102,6 +121,10 @@
       </div>`;
     if (animate && !reduce) { stage.classList.remove("swap"); void stage.offsetWidth; stage.classList.add("swap"); }
     S.initCounters(stage);
+    const cnt = $(".show-count", show); if (cnt) cnt.textContent = `${cur + 1} / ${FEAT.length}`;
+    /* Выбранная вкладка видна в ленте на телефоне — сдвигаем ленту, не страницу */
+    const tabs = $(".show-tabs", show), on = $$(".show-tab", show)[cur];
+    if (tabs && on && tabs.scrollWidth > tabs.clientWidth) tabs.scrollTo({ left: on.offsetLeft - tabs.offsetLeft - 20, behavior: reduce ? "auto" : "smooth" });
     $$(".show-tab", show).forEach((t, i) => {
       t.setAttribute("aria-selected", String(i === cur));
       t.tabIndex = i === cur ? 0 : -1;
@@ -120,7 +143,22 @@
     if (reduce || !showVisible || paused) return;
     timer = setTimeout(() => go(cur + 1), SHOW_MS);
   }
-  show.addEventListener("click", e => { const t = e.target.closest(".show-tab"); if (t) go(+t.dataset.i, true); });
+  show.addEventListener("click", e => {
+    const t = e.target.closest(".show-tab"); if (t) { go(+t.dataset.i, true); return; }
+    const a = e.target.closest(".show-arrow"); if (a) go(cur + +a.dataset.step, true);
+  });
+  /* Свайп по обложке листает игры */
+  let sx = 0, sy = 0, swiped = false;
+  show.addEventListener("touchstart", e => { if (!e.target.closest(".show-mediawrap")) return; sx = e.touches[0].clientX; sy = e.touches[0].clientY; swiped = false; }, { passive: true });
+  show.addEventListener("touchend", e => {
+    if (!e.target.closest(".show-mediawrap")) return;
+    const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.4) { swiped = true; go(cur + (dx < 0 ? 1 : -1), true); }
+  }, { passive: true });
+  show.addEventListener("click", e => { if (swiped && e.target.closest(".show-media")) { e.preventDefault(); swiped = false; } }, true);
+  /* Предзагрузка: обложки и иконки главных игр в кэш, чтобы смена была мгновенной */
+  const preload = () => FEAT.forEach(g => { [S.thumbSrc(g.id), S.iconSrc(g.id)].forEach(src => { const im = new Image(); im.decoding = "async"; im.src = src; }); });
+  if ("requestIdleCallback" in window) requestIdleCallback(preload, { timeout: 1500 }); else setTimeout(preload, 600);
   show.addEventListener("keydown", e => {
     if (!e.target.closest(".show-tab")) return;
     const d = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];

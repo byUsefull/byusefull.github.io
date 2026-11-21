@@ -824,7 +824,7 @@ end)</code></pre>
     const msgs = CHAT(), N = msgs.length;
     el.innerHTML = `<div class="ac">
       <div class="ac-chat">
-        <div class="ac-head"><span class="ac-dot"></span>${T("Кирилл и Claude", "Kirill and Claude")}
+        <div class="ac-head"><span class="ac-dot"></span>${T("Диалог с Claude", "Chat with Claude")}
           <span class="ac-ctrl">
             <button type="button" class="ac-prev" aria-label="${T("Назад", "Back")}">‹</button>
             <button type="button" class="ac-play"></button>
