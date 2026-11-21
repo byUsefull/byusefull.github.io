@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Кирилл Скорик — Roblox / Luau-разработчик</title>
+<meta name="description" content="Roblox / Luau-разработчик: игры целиком, от идеи и архитектуры до релиза. 16 опубликованных игр, больше 11 млн посещений.">
+<meta name="theme-color" content="#1c1d20">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Кирилл Скорик — Roblox / Luau">
+<meta property="og:title" content="Кирилл Скорик — Roblox / Luau-разработчик">
+<meta property="og:description" content="Игры для Roblox от идеи до релиза: 16 опубликованных игр, больше 11 млн посещений, ведущий программист «Мира Кинопоиска» в MAFF.">
+<meta property="og:image" content="https://byusefull.github.io/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://byusefull.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="sections.css">
+</head>
+<body data-page="home">
+<main id="main" tabindex="-1">
+
+  <!-- ============ Первый экран ============ -->
+  <section class="hero" id="top" data-path="Workspace" data-obj="Frame &quot;Hero&quot;">
+    <div class="hero-text">
+      <h1 data-i18n="hero.h1">Делаю игры для&nbsp;Roblox от&nbsp;идеи до&nbsp;релиза</h1>
+      <p class="intro" data-i18n="hero.intro">Меня зовут Кирилл, я&nbsp;Luau-разработчик. Пишу клиент, сервер и&nbsp;игровые системы, а&nbsp;после запуска развиваю игру по&nbsp;данным и&nbsp;отзывам игроков.</p>
+      <p class="avail"><span class="avail-dot" aria-hidden="true"></span><span data-i18n="hero.avail">Открыт к&nbsp;предложениям: любой формат, живу в&nbsp;Москве, могу начать сразу</span></p>
+      <dl class="facts">
+        <div><dt data-i18n="f.visits">Посещения</dt><dd><b class="num" data-count="11 000 000+">11 000 000+</b> <span data-i18n="f.visitsNote">в&nbsp;Roblox-проектах</span></dd></div>
+        <div><dt data-i18n="f.games">Игры</dt><dd><b class="num">16</b> <span data-i18n="f.gamesNote">опубликованных</span></dd></div>
+        <div><dt>MAFF</dt><dd data-i18n="f.maff">Ведущий программист «Мира&nbsp;Кинопоиска»</dd></div>
+        <div><dt data-i18n="f.exp">Опыт</dt><dd data-i18n="f.expNote">10&nbsp;лет в&nbsp;программировании, в&nbsp;Roblox с&nbsp;2024</dd></div>
+      </dl>
+      <div class="hero-actions">
+        <a class="btn-solid big" href="#projects" data-go="projects"><svg class="ic"><use href="#i-play"/></svg><span data-i18n="hero.cta">Смотреть проекты</span></a>
+        <a class="btn-ghost big" href="assets/Kirill_Skorik_Roblox_Developer.pdf" download data-net="Download Kirill_Skorik_Roblox_Developer.pdf (88 KB)"><svg class="ic"><use href="#i-pdf"/></svg><span data-i18n="hero.pdf">Скачать резюме</span></a>
+      </div>
+    </div>
+    <div class="hero-games" id="games" data-path="Workspace.Games">
+      <ul class="mosaic" aria-label="Опубликованные игры"></ul>
+      <div class="inspect" aria-live="polite">
+        <div class="inspect-head"><span>Properties</span><span class="inspect-target" id="inspTarget"></span></div>
+        <dl class="inspect-rows" id="inspRows"></dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Бренды и пресса ============ -->
+  <section class="brands" aria-label="Бренды и публикации">
+    <div class="brands-row">
+      <span class="brands-k" data-i18n="br.k">В&nbsp;студии MAFF делал игры для</span>
+      <a href="game.html?g=kinopoisk" data-i18n="br.kp">Кинопоиска</a>
+      <a href="game.html?g=khl" data-i18n="br.khl">КХЛ</a>
+      <a href="game.html?g=marmelad" data-i18n="br.mar">Мармеладыча</a>
+    </div>
+    <div class="brands-row">
+      <span class="brands-k" data-i18n="br.press">О&nbsp;«Мире Кинопоиска» писали</span>
+      <a href="https://www.kinopoisk.ru/media/article/4011285/" target="_blank" rel="noopener" data-net="Open kinopoisk.ru/media/article/4011285">Кинопоиск</a>
+      <a href="https://rg.ru/2025/06/03/kinopoisk-zapustil-igrovoe-fandom-prostranstvo-v-roblox.html" target="_blank" rel="noopener" data-net="Open rg.ru">RG.ru</a>
+      <a href="https://trashbox.ru/link/2025-06-03-mini-igry-kinopoisk-v-roblox" target="_blank" rel="noopener" data-net="Open trashbox.ru">Trashbox</a>
+      <a href="https://kinotv.ru/read/news/geroi-eterny-i-nekiy-sekretnyy-gost-popolnyat-mir-kinopoiska-v-roblox/" target="_blank" rel="noopener" data-net="Open kinotv.ru">КиноТВ</a>
+      <a href="game.html?g=kinopoisk#press" data-i18n="br.more">и&nbsp;ещё 2</a>
+    </div>
+  </section>
+
+  <!-- ============ Проекты: витрина ============ -->
+  <section class="block" id="projects" data-path="Workspace.Games">
+    <header class="section-head">
+      <h2 data-i18n="proj.h">Главные игры и&nbsp;что в&nbsp;них было сложно</h2>
+      <p data-i18n="proj.text">Своя игра на&nbsp;5,4&nbsp;миллиона посещений, экономика, в&nbsp;которую вложился инвестор, каркас для команды программистов, чужая игра на&nbsp;58&nbsp;миллионов, её&nbsp;новая версия на&nbsp;моём каркасе и&nbsp;игра, сделанная за&nbsp;три дня. Коротко&nbsp;— здесь, вся история&nbsp;— на&nbsp;странице игры.</p>
+    </header>
+    <div class="show" id="show"></div>
+    <div class="more" id="more"></div>
+  </section>
+
+  <!-- ============ Как устроены мои игры ============ -->
+  <section class="block" id="systems" data-path="ServerScriptService">
+    <header class="section-head">
+      <h2 data-i18n="sys.h">Как устроены мои игры</h2>
+      <p data-i18n="sys.text">Каждая игра выше&nbsp;— ступень: в&nbsp;одной код вырос, в&nbsp;другой его пришлось объяснять команде. Сейчас это каркас, который переезжает из&nbsp;игры в&nbsp;игру. Ниже можно запустить его, проследить одну покупку и&nbsp;открыть любую систему.</p>
+    </header>
+    <p class="gh-link"><a href="https://github.com/byUsefull/luau-game-framework" target="_blank" rel="noopener" data-net="Open github.com/byUsefull/luau-game-framework"><svg class="ic"><use href="#i-link"/></svg><span data-i18n="sys.gh">Ядро каркаса открыто на GitHub: luau-game-framework</span></a></p>
+    <h3 class="sub-h" data-i18n="sys.evo">Как рос мой код</h3>
+    <div data-widget="evolve"></div>
+    <h3 class="sub-h" data-i18n="sys.lab">Как он устроен сейчас</h3>
+    <div class="mods" id="mods"></div>
+  </section>
+
+  <!-- ============ Работа с ИИ ============ -->
+  <section class="block" id="ai" data-path="TextChatService">
+    <header class="section-head">
+      <h2 data-i18n="ai.h">Как я&nbsp;работаю с&nbsp;ИИ</h2>
+      <p data-i18n="ai.text">Использую ИИ на&nbsp;всех этапах: обсуждаю идеи, планирую и&nbsp;делю задачи, пишу код, делаю интерфейсы, иконки и&nbsp;обложки, тестирую и&nbsp;разбираю аналитику. Способ подбираю под&nbsp;задачу: что-то пишу сам, что-то делаю вместе с&nbsp;ИИ. Решения и&nbsp;качество результата&nbsp;— на&nbsp;мне.</p>
+    </header>
+    <div class="planner" id="planner"></div>
+  </section>
+
+  <!-- ============ Обо мне ============ -->
+  <section class="block" id="about" data-path="Players.Kirill">
+    <header class="section-head">
+      <h2 data-i18n="about.h">Обо мне</h2>
+      <p data-i18n="about.text">Программирую 10&nbsp;лет. Начинал с&nbsp;Python: парсеры для Avito и&nbsp;VK, боты, автоматизация, учебные сайты на&nbsp;Django. Собирался в&nbsp;веб, но&nbsp;в&nbsp;2024 году ушёл в&nbsp;Roblox&nbsp;— платформу, в&nbsp;которую сам играл ещё до&nbsp;программирования и&nbsp;играю до&nbsp;сих пор.</p>
+    </header>
+    <div class="about-grid">
+      <ol class="journey">
+        <li><span class="journey-when">2024</span><p data-i18n="path.1">Первые задачи в&nbsp;Roblox в&nbsp;небольших командах, в&nbsp;основном на&nbsp;энтузиазме.</p></li>
+        <li><span class="journey-when" data-i18n="path.2w">10&nbsp;февраля 2025</span><p data-i18n="path.2">Первый релиз&nbsp;— <a href="game.html?g=beavers">Beavers Tycoon</a>, модели сделал знакомый. Дальше тайкуны: <a href="game.html?g=cats">Cats Tycoon</a> целиком сам, включая модели, в&nbsp;<a href="game.html?g=island">Island Tycoon</a> и&nbsp;<a href="game.html?g=christmas">Christmas House Tycoon</a>&nbsp;— всё, кроме карты.</p></li>
+        <li><span class="journey-when" data-i18n="path.3w">Свои хиты</span><p data-i18n="path.3"><a href="game.html?g=growth">1&nbsp;Click = 1&nbsp;Growth</a> и&nbsp;<a href="game.html?g=heat">1&nbsp;Click = 1&nbsp;Heat</a>, <a href="game.html?g=staff">My Magic Staff Farm</a> с&nbsp;3D-моделлером. <a href="game.html?g=leaf">Leafbound</a> сделали вместе с&nbsp;напарником и&nbsp;продали долю 90%.</p></li>
+        <li><span class="journey-when" data-i18n="path.4w">Студии</span><p data-i18n="path.4">В&nbsp;MAFF&nbsp;— <a href="game.html?g=kinopoisk">«Мир Кинопоиска»</a>, <a href="game.html?g=khl">игра КХЛ</a> и&nbsp;<a href="game.html?g=marmelad">«Завод Мармеладыча»</a>. Мини-игра для ещё одной метавселенной под NDA. Приглашённым программистом&nbsp;— в&nbsp;<a href="game.html?g=circle">Don't Leave the Circle</a>.</p></li>
+        <li><span class="journey-when" data-i18n="path.5w">Сейчас</span><p data-i18n="path.5"><a href="game.html?g=gyp">Grow Your Parts</a>&nbsp;— новая версия Growth, <a href="game.html?g=bonfire">Build a&nbsp;Bonfire</a>, сделанная за&nbsp;три дня, <a href="game.html?g=spell">Spell Brawl</a> вдвоём с&nbsp;другом и&nbsp;<a href="game.html?g=sort">Sort the Museum</a>. Всё на&nbsp;своём каркасе, с&nbsp;аналитикой и&nbsp;Game Planner.</p></li>
+      </ol>
+      <dl class="about-facts">
+        <div><dt data-i18n="ab.edu">Образование</dt><dd data-i18n="ab.eduV">Коломенский институт (филиал) Московского политехнического университета, «Информатика и&nbsp;вычислительная техника», 2023</dd></div>
+        <div><dt data-i18n="ab.cert">Сертификаты</dt><dd><a href="https://stepik.org/cert/2580477" target="_blank" rel="noopener" data-net="Open stepik.org/cert/2580477" data-i18n="ab.py">Python ООП</a> <span data-i18n="ab.cert1">· 2024, с&nbsp;отличием</span><br><a href="https://stepik.org/cert/2603655" target="_blank" rel="noopener" data-net="Open stepik.org/cert/2603655">Django + Docker</a> <span data-i18n="ab.cert2">· 2024, с&nbsp;отличием</span></dd></div>
+        <div><dt data-i18n="ab.en">Английский</dt><dd>A1</dd></div>
+        <div><dt data-i18n="ab.stack">Стек</dt><dd class="stack"><span>Luau --!strict</span><span>OOP</span><span>Client ⇄ Server</span><span>DataStore</span><span>ProfileStore</span><span>MemoryStore</span><span>TeleportService</span><span>MarketplaceService</span><span>MicroProfiler</span><span>Rojo</span><span>Git</span><span>MCP</span><span>Python</span><span>Open Cloud</span></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ Контакты ============ -->
+  <section class="block contact" id="contact" data-path="Contact">
+    <header class="section-head">
+      <h2 data-i18n="ct.h">Связаться</h2>
+      <p data-i18n="ct.text">Быстрее всего отвечаю в&nbsp;Telegram. Резюме в&nbsp;PDF&nbsp;— та&nbsp;же история на&nbsp;двух страницах.</p>
+    </header>
+    <div class="contact-grid"><div>
+    <dl class="seek">
+      <div><dt data-i18n="sk.fmt">Формат</dt><dd data-i18n="sk.fmtV">Рассматриваю любой: полная занятость, проект, частичная занятость</dd></div>
+      <div><dt data-i18n="sk.tz">Часовой пояс</dt><dd data-i18n="sk.tzV">Москва, UTC+3</dd></div>
+      <div><dt data-i18n="sk.start">Начать</dt><dd data-i18n="sk.startV">Могу сразу</dd></div>
+    </dl>
+    <ul class="contacts">
+      <li><span class="c-key">Telegram</span><a href="https://t.me/stf_use" target="_blank" rel="noopener" data-net="Open t.me/stf_use">@stf_use</a></li>
+      <li><span class="c-key">Email</span><a href="mailto:hellothanksforyou@gmail.com" data-net="Open mailto:hellothanksforyou@gmail.com">hellothanksforyou@gmail.com</a><button type="button" class="copy" data-copy="hellothanksforyou@gmail.com" aria-label="Скопировать email"><svg class="ic"><use href="#i-copy"/></svg></button></li>
+      <li><span class="c-key">GitHub</span><a href="https://github.com/byUsefull" target="_blank" rel="noopener" data-net="Open github.com/byUsefull">byUsefull</a></li>
+      <li><span class="c-key">Discord</span><span class="c-val">plothelive</span><button type="button" class="copy" data-copy="plothelive" aria-label="Скопировать ник Discord"><svg class="ic"><use href="#i-copy"/></svg></button></li>
+    </ul>
+    </div>
+    <aside class="visit-wrap">
+      <h3 data-i18n="vf.h">Ваша сессия как воронка</h3>
+      <div data-widget="visit"></div>
+    </aside>
+    </div>
+    <div class="contact-actions">
+      <a class="btn-solid big" href="https://t.me/stf_use" target="_blank" rel="noopener" data-net="Open t.me/stf_use"><svg class="ic"><use href="#i-send"/></svg><span data-i18n="ct.tg">Написать в&nbsp;Telegram</span></a>
+      <a class="btn-ghost big" href="assets/Kirill_Skorik_Roblox_Developer.pdf" download data-net="Download Kirill_Skorik_Roblox_Developer.pdf (88 KB)"><svg class="ic"><use href="#i-pdf"/></svg><span data-i18n="hero.pdf">Скачать резюме</span></a>
+    </div>
+  </section>
+</main>
+
+<script src="data.js"></script>
+<script src="i18n.js"></script>
+<script src="placetree.js"></script>
+<script src="core.js"></script>
+<script src="widgets.js"></script>
+<script src="home.js"></script>
+</body>
+</html>

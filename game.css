@@ -1,0 +1,82 @@
+/* =====================================================
+   Страница игры (game.html). Токены — в styles.css
+   ===================================================== */
+.gp-crumbs { display: flex; justify-content: space-between; align-items: center; max-width: 1240px; margin: 28px auto 0; padding: 0 32px; font: 400 13px var(--mono); color: var(--faint); }
+.gp-crumbs a { display: inline-flex; align-items: center; gap: 8px; color: var(--dim); text-decoration: none; padding: 6px 10px 6px 0; }
+.gp-crumbs a:hover { color: var(--text); }
+.gp-crumbs a:hover .ic { transform: translateX(-3px); }
+.gp-crumbs .ic { transition: transform .25s var(--ease); }
+
+.gp { max-width: 1240px; margin: 20px auto 0; padding: 0 32px; }
+.gp-hero { display: grid; grid-template-columns: minmax(0, 620px) minmax(0, 1fr); gap: 48px; align-items: start; }
+.gp-hero .cover-main { animation: heroIn .7s var(--ease) both; }
+@keyframes heroIn { from { opacity: 0; transform: scale(.97); } }
+.gp-head > * { animation: rise .55s var(--ease) both; }
+.gp-head > :nth-child(2) { animation-delay: .05s; } .gp-head > :nth-child(3) { animation-delay: .1s; }
+.gp-head > :nth-child(4) { animation-delay: .15s; } .gp-head > :nth-child(5) { animation-delay: .2s; } .gp-head > :nth-child(6) { animation-delay: .25s; }
+.gp-genre { margin: 0; font: 500 13px/1.4 var(--mono); color: var(--fn); }
+.gp-head h1 { margin: 8px 0 0; max-width: none; font: 700 clamp(36px, 4vw, 54px)/1.04 var(--sans); letter-spacing: -.025em; }
+.gp-head .case-lede { max-width: 46ch; }
+.case-role { margin: 12px 0 0; max-width: 48ch; font-size: 16px; line-height: 1.5; color: var(--dim); }
+.gp-head .case-props { margin-top: 24px; }
+.gp-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.gp-status { margin: 10px 0 0; font-size: 13.5px; color: var(--faint); }
+.gp-notice { margin: 36px 0 0; max-width: 900px; padding: 16px 18px; border: 1px dashed #57492a; border-radius: 10px; background: rgba(245,196,81,.04); }
+.gp-notice b { font-size: 14px; font-weight: 600; color: var(--num); }
+.gp-notice p { margin: 6px 0 0; font-size: 15px; line-height: 1.55; color: var(--dim); }
+
+.gp .chapter { margin-top: 88px; }
+.gp .chapter h2 { margin: 0; font: 700 28px/1.2 var(--sans); letter-spacing: -.015em; }
+.ch-visual, .ch-code { margin-top: 28px; max-width: 1100px; }
+.ch-pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; margin-top: 28px; max-width: 1100px; align-items: start; }
+.ch-pair.narrow { grid-template-columns: 250px minmax(0, 1fr); }
+.ch-pair .ch-visual, .ch-pair .ch-code { margin-top: 0; }
+.ch-code { display: grid; gap: 16px; min-width: 0; }
+.ch-blocks { display: grid; gap: 16px; align-content: start; }
+.gp .after-grid { margin-top: 28px; }
+.gp > .changelog, .gp .chapter > .changelog, .gp .chapter > .ch-blocks { margin-top: 28px; max-width: 900px; }
+
+/* О проекте писали */
+.press-list { list-style: none; margin: 24px 0 0; padding: 0; max-width: 900px; border-top: 1px solid var(--rule); }
+.press-list a { display: grid; grid-template-columns: 140px minmax(0, 1fr) 16px; gap: 16px; align-items: center; padding: 13px 8px; border-bottom: 1px solid var(--rule); color: inherit; text-decoration: none; transition: background .2s; }
+.press-list a:hover { background: var(--hover); }
+.press-src { font: 500 13px var(--mono); color: var(--fn); }
+.press-title { font-size: 15.5px; line-height: 1.45; }
+.press-list .ic { color: var(--faint); transition: transform .25s var(--ease); }
+.press-list a:hover .ic { transform: translate(2px, -2px); color: var(--text); }
+
+/* Соседние игры */
+.gp-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1240px; margin: 120px auto 0; padding: 0 32px; }
+.nbr { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 16px; align-items: center; padding: 12px; border: 1px solid var(--rule); border-radius: 12px; background: var(--panel); color: inherit; text-decoration: none; transition: border-color .25s, transform .25s var(--ease); }
+.nbr:hover { border-color: var(--select-line); transform: translateY(-2px); }
+.nbr img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 8px; transition: transform .4s var(--ease); }
+.nbr:hover img { transform: scale(1.03); }
+.nbr-text { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.nbr-text em { font: 400 12px var(--mono); font-style: normal; color: var(--faint); }
+.nbr-text b { font-size: 18px; font-weight: 600; }
+.nbr-text span { font-size: 13.5px; color: var(--dim); }
+.nbr-next { grid-template-columns: minmax(0, 1fr) 170px; text-align: right; }
+.nbr-next img { order: 2; }
+
+.gp-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; max-width: 1240px; margin: 72px auto 40px; padding: 28px 32px 0; border-top: 1px solid var(--rule); }
+.gp-cta p { flex: 1 1 100%; margin: 0 0 6px; font-size: 18px; }
+
+@media (max-width: 1080px) {
+  .gp-hero { grid-template-columns: 1fr; gap: 32px; }
+  .gp-hero .cover { max-width: 680px; }
+  .ch-pair, .ch-pair.narrow { grid-template-columns: 1fr; }
+  .ch-pair.narrow .ch-visual { max-width: 320px; }
+}
+@media (max-width: 760px) {
+  .gp-crumbs, .gp, .gp-nav { padding-left: 20px; padding-right: 20px; }
+  .gp-cta { padding-left: 20px; padding-right: 20px; }
+  .gp .chapter { margin-top: 64px; }
+  .gp .chapter h2 { font-size: 24px; }
+  .gp-nav { grid-template-columns: 1fr; margin-top: 80px; }
+  .nbr, .nbr-next { grid-template-columns: 110px minmax(0, 1fr); text-align: left; }
+  .nbr-next img { order: 0; }
+  .press-list a { grid-template-columns: minmax(0, 1fr) 16px; gap: 4px 12px; }
+  .press-src { grid-column: 1; }
+  .press-title { grid-column: 1; }
+  .press-list .ic { grid-column: 2; grid-row: 1 / span 2; }
+}
